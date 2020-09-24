@@ -1,0 +1,93 @@
+descargar vagrant y virtual box.
+
+entran a la ruta 
+
+add box (check the box on vagrantup.com)
+# vagrant box add ubuntu/bionic64
+
+initialize the box
+# vagrant init ubuntu/bionic64
+
+run the box
+# vagrant up
+
+acceses to the box
+# vagrant ssh
+
+Docker install process
+
+delete old vertions
+# sudo apt-get remove docker docker-engine docker.io containerd runc
+
+add repositories
+# sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+Add Docker’s official GPG key
+# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+set up the repository
+# sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable" 
+
+install Docker
+ # sudo apt-get update
+ # sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+use --fix-missing if not install correctly 
+
+varify Docker was install
+# sudo docker run hello-world
+
+create a direction and go to it
+# mkdir src
+# cd src
+
+put your app or create it (example test)
+# nano index.php
+
+code:
+<?php
+
+echo "hello world";
+
+?>
+
+create a docker file (on home)
+# nano Dockerfile
+
+go to Docker hub to select your image from Docker
+
+code of Dockerfile
+--------------------------------
+FROM php:7.4.1-apache-buster
+
+COPY src/ /var/www/html/
+
+EXPOSE 80
+-------------------------------
+
+build the image with -t to put a name
+(the point is the direction of Dockerfile)
+# docker build -t hola-php .
+
+run the image
+(-p 80:80 is for conect port of container to the port of host)
+# docker run -p 80:80 hola-php
+
+there you see the hello world
+
+if do not see it check the Vagrantfile on your real machin ../HashiCorp/ and enable this line code
+note (delete the chart)
+
+(#) config.vm.network "forwarded_port", guest: 80, host: 8080
+
+(#) config.vm.network "private_network", ip: "192.168.33.10"
+
+
