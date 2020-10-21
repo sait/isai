@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM nginx
 
 RUN mkdir /usr/pingpong
 
