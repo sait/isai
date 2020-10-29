@@ -1,18 +1,13 @@
 FROM nginx
 
-RUN mkdir /usr/pingpong
+ADD pingpong /usr/src
 
-COPY pingpong/pingpong  /usr/pingpong/pingpong
+WORKDIR /usr/src
 
-RUN cd /usr/pingpong
+RUN chmod +x /usr/src/pingpong
 
-RUN chmod +x /usr/pingpong
+RUN chown 775 /usr/src/pingpong
 
-RUN chown 775 /usr/pingpong
-
-WORKDIR /usr/pingpong
-
-EXPOSE 8080:80
+EXPOSE 80:8080
 
 CMD ./pingpong
-
