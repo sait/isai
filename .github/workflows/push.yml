@@ -54,10 +54,4 @@ jobs:
           conftest: '0.18.2'
        id: setup
       - run: |
-          kubectl version --client
-          kustomize version
-          helm version --client
-          helmv3 version
-          kubeval --version
-          conftest --version
-          yq --version
+          kubectl get pods
