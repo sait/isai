@@ -37,15 +37,9 @@ jobs:
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags:  adsprogramer/isai:latest
+          tags:  adsprogramer/isai:${{  github.sha  }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-      -     
-       uses: danielr1996/kubectl-action@1.0.0
-       name: Deploy
-       with:
-          kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
-          args: apply -f 02-ping-deploymen.yml
