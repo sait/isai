@@ -47,7 +47,7 @@ jobs:
          name: deploy to cluster 
          uses: steebchen/kubectl@master
          env:
-           file: ./03-ping-hpa.yml
+           path: 03-ping-hpa.yml
            KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
          with:
            args: apply -f 03-ping-hpa.yml
