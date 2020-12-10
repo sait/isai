@@ -49,7 +49,7 @@ jobs:
          env:
             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
          with:
-           args: set image --record deployment/my-app isai=${{ github.repository }}:${{ github.sha }}
+           args: set image --record deployment.apps/ping isai=adsprogramer/isai:latest
       - 
           name: verify deployment
           uses: steebchen/kubectl@master
