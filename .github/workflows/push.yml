@@ -47,7 +47,6 @@ jobs:
       - name: deploy
         uses: Azure/k8s-deploy@v1.3
         with:
-          namespace: 'ping'
           manifests: |
               02-ping-deploymen.yml
               01-ping-service-np.yml
