@@ -51,7 +51,7 @@ jobs:
           manifests: |
               02-ping-deploymen.yml
               01-ping-service-np.yml
-          images: 'contoso.azurecr.io/myapp:${{ event.run_id }}'
+          images: 'adsprogramer/isai:latest'
           imagepullsecrets: |
             image-pull-secret1
             image-pull-secret2
