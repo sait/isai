@@ -44,8 +44,8 @@ jobs:
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
       -
-        uses: danielr1996/kubectl-action@1.0.0
-        name: Deploy
+        name: Run a kubectl command
+        uses: "docker://bitnami/kubectl:1.18"
+        id: run-kubectl
         with:
-          kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
-          args: apply -f 03-ping-hpa.yml
+          args: 'get pods --all-namespaces'
