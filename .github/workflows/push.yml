@@ -43,9 +43,16 @@ jobs:
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-      -
-        name: Run a kubectl command
-        uses: "docker://bitnami/kubectl:1.18"
-        id: run-kubectl
+        
+      - name: deploy
+        uses: Azure/k8s-deploy@v1.3
         with:
-          args: 'get pods --all-namespaces'
+          namespace: 'ping'
+          manifests: |
+              02-ping-deploymen.yml
+              01-ping-service-np.yml
+          images: 'contoso.azurecr.io/myapp:${{ event.run_id }}'
+          imagepullsecrets: |
+            image-pull-secret1
+            image-pull-secret2
+          kubectl-version: 'latest'
