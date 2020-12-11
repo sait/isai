@@ -48,8 +48,7 @@ jobs:
         uses: steebchen/kubectl@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-        with:
-          file: ./03-ping-hpa.yml 
+        with:  
           args: apply -f ${{ github.repository }}/03-ping-hpa.yml
           
       - name: verify deployment
