@@ -48,4 +48,4 @@ jobs:
         name: Deploy
         with:
           kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
-          args: apply -f ./03-ping-hpa.yml
+          args: apply -f 03-ping-hpa.yml
