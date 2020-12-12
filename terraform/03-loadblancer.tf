@@ -1,6 +1,6 @@
 resource "digitalocean_loadbalancer" "public" {
   name = "loadbalancer-1"
-  region = "nyc1"
+  region = "sfo1"
 
   forwarding_rule {
     entry_port = 80
@@ -15,5 +15,5 @@ resource "digitalocean_loadbalancer" "public" {
     protocol = "tcp"
   }
 
-  droplet_tag = "pelado-nodes"
+  droplet_tag = "proto-nodes"
 }
